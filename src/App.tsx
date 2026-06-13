@@ -114,7 +114,11 @@ export function App() {
               <h2>选择物品</h2>
             </div>
             <div className="selected-item-chip">
-              <ItemIcon iconId={selectedItem.iconId} label={selectedItem.nameZh} />
+              <ItemIcon
+                iconId={selectedItem.iconId}
+                itemId={selectedItem.id}
+                label={selectedItem.nameZh}
+              />
               <span>{selectedItem.nameZh}</span>
             </div>
           </div>
@@ -158,7 +162,7 @@ export function App() {
                 }`}
                 onClick={() => chooseItem(item.id)}
               >
-                <ItemIcon iconId={item.iconId} label={item.nameZh} />
+                <ItemIcon iconId={item.iconId} itemId={item.id} label={item.nameZh} />
                 <span>{item.nameZh}</span>
               </button>
             ))}
@@ -308,7 +312,7 @@ export function App() {
       </section>
 
       <footer className="disclaimer">
-        本工具不是 Minecraft 官方产品，未获得 Mojang 或 Microsoft 的批准，也与 Mojang 或 Microsoft 无关联。图标为自制极简风格图标。
+        本工具不是 Minecraft 官方产品，未获得 Mojang 或 Microsoft 的批准，也与 Mojang 或 Microsoft 无关联。图标为自制极简风格图标，材质配色参考游戏物品印象。
       </footer>
     </main>
   );
