@@ -1,0 +1,19 @@
+[package]
+name = "minecraft-enchanting-order-calculator"
+version = "0.1.0"
+description = "Minecraft enchanting order calculator"
+authors = ["Codex"]
+edition = "2021"
+
+[lib]
+name = "minecraft_enchanting_order_calculator_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
