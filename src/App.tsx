@@ -312,7 +312,7 @@ export function App() {
       </section>
 
       <footer className="disclaimer">
-        本工具不是 Minecraft 官方产品，未获得 Mojang 或 Microsoft 的批准，也与 Mojang 或 Microsoft 无关联。图标为自制极简风格图标，材质配色参考游戏物品印象。
+        本工具不是 Minecraft 官方产品，未获得 Mojang 或 Microsoft 的批准，也与 Mojang 或 Microsoft 无关联。图标为自制卡通风格图标，材质配色参考游戏物品印象。
       </footer>
     </main>
   );
