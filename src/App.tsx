@@ -308,9 +308,8 @@ export function App() {
       </section>
 
       <footer className="disclaimer">
-        本工具不是 Minecraft 官方产品，未获得 Mojang 或 Microsoft 的批准，也与 Mojang 或 Microsoft 无关联。图标为自制像素风图标。
+        本工具不是 Minecraft 官方产品，未获得 Mojang 或 Microsoft 的批准，也与 Mojang 或 Microsoft 无关联。图标为自制圆润风格图标。
       </footer>
     </main>
   );
 }
-
