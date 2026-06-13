@@ -21,7 +21,7 @@ The tool lets users choose an enchantable item, choose desired enchantments and 
 - Enchantments: include all vanilla Java enchantments that can be applied through an anvil, including treasure enchantments and curses.
 - Conflicts: mutually exclusive enchantments are disabled in the UI as soon as a conflicting choice is selected.
 - Results: show detailed steps, per-step anvil level cost, cumulative anvil level cost, and whether each step satisfies the 39-level per-step limit.
-- Icons: use self-designed rounded soft 3D item icons with simple toy-like shapes. Do not bundle, import, or redistribute official Minecraft textures.
+- Icons: use self-designed high-contrast minimal item icons with recognizable silhouettes. Do not bundle, import, or redistribute official Minecraft textures.
 
 ## Out Of Scope For The First Version
 
@@ -47,12 +47,12 @@ On wider windows, the app uses a two-pane layout:
 
 On narrow windows, the panes stack vertically.
 
-The visual style should feel like a practical desktop utility with gentle Minecraft-inspired friendliness. It should not mimic official Minecraft branding or use official logos/textures.
+The visual style should feel like a practical desktop utility with clean, high-recognition item icons. It should not mimic official Minecraft branding or use official logos/textures.
 
 ## User Flow
 
 1. The user chooses an item from a list or grid.
-2. Each item entry shows a self-designed rounded soft 3D icon and Chinese item name.
+2. Each item entry shows a self-designed high-contrast minimal icon and Chinese item name.
 3. After an item is selected, the app lists enchantments that can be applied to that item.
 4. Each enchantment row has a checkbox and a level selector.
 5. The level selector is disabled until its enchantment is selected.
@@ -87,7 +87,7 @@ Core modules:
 - `selection-state`: UI-facing state for the selected item, selected enchantments, selected levels, and disabled conflict reasons.
 - `anvil-calculator`: pure TypeScript calculation engine for finding the lowest-cost valid order.
 - `result-presenter`: transforms calculator output into Chinese UI labels and step descriptions.
-- `item-icons`: self-designed rounded soft 3D icons mapped to item identifiers.
+- `item-icons`: self-designed high-contrast minimal icons mapped to item identifiers.
 
 The calculation engine must not depend on React components or browser DOM APIs.
 

@@ -196,7 +196,7 @@ select:disabled {
   background: #eef8f2;
 }
 
-.toy-icon {
+.item-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -205,7 +205,7 @@ select:disabled {
   flex: 0 0 46px;
 }
 
-.toy-icon svg {
+.item-icon svg {
   display: block;
   width: 46px;
   height: 46px;
