@@ -3,23 +3,44 @@ import {
   CircleAlert,
   FlaskConical,
   RotateCcw,
-  Search,
-  ShieldCheck
+  Search
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import { ItemIcon } from "./components/ItemIcon";
 import { ENCHANTMENT_BY_ID } from "./data/enchantments";
 import { ITEM_BY_ID, ITEM_CATEGORY_LABELS, ITEMS } from "./data/items";
-import { ANVIL_LIMIT, calculateBestOrder } from "./domain/anvil";
+import { calculateBestOrder } from "./domain/anvil";
 import { describeMergeObject, toRoman } from "./domain/format";
 import {
   getApplicableEnchantments,
   getConflictReason
 } from "./domain/selection";
-import type { CalculationResult, ItemCategory } from "./domain/types";
+import type { CalculationResult, ItemCategory, MergeObject } from "./domain/types";
 
 const MAX_SELECTED_ENCHANTMENTS = 12;
 const DEFAULT_ITEM_ID = "diamond_sword";
+
+function MergeObjectView({
+  object,
+  className = ""
+}: {
+  object: MergeObject;
+  className?: string;
+}) {
+  const item = object.itemId ? ITEM_BY_ID[object.itemId] : null;
+  const label = describeMergeObject(object);
+
+  return (
+    <span className={`merge-object ${className}`.trim()}>
+      {object.kind === "item" && item ? (
+        <ItemIcon iconId={item.iconId} itemId={item.id} label={item.nameZh} />
+      ) : (
+        <ItemIcon iconId="enchanted_book" label="附魔书" />
+      )}
+      <span>{label}</span>
+    </span>
+  );
+}
 
 export function App() {
   const [selectedItemId, setSelectedItemId] = useState(DEFAULT_ITEM_ID);
@@ -100,10 +121,7 @@ export function App() {
           <p className="eyebrow">Java Edition 26.1.2 规则</p>
           <h1>附魔顺序计算器</h1>
         </div>
-        <div className="topbar__meta">
-          <ShieldCheck size={18} aria-hidden="true" />
-          <span>每步铁砧 ≤ {ANVIL_LIMIT} 级</span>
-        </div>
+        <div className="topbar__meta">精准排序 · 低成本优先</div>
       </header>
 
       <section className="workspace" aria-label="附魔计算器">
@@ -288,23 +306,24 @@ export function App() {
               <ol className="steps">
                 {result.steps.map((step, index) => (
                   <li key={`${index}-${step.cumulativeCost}`}>
-                    <div className="step-title">第 {index + 1} 步</div>
-                    <p>
-                      左槽：{describeMergeObject(step.left)}
-                      <br />
-                      右槽：{describeMergeObject(step.right)}
-                    </p>
-                    <div className="step-costs">
-                      <span>本次 {step.cost} 级</span>
-                      <span>累计 {step.cumulativeCost} 级</span>
-                      <span>≤ {ANVIL_LIMIT} 级</span>
+                    <div className="step-header">
+                      <div className="step-title">第 {index + 1} 步</div>
+                      <span className="step-cost">本次 {step.cost} 级</span>
+                    </div>
+                    <div className="merge-formula">
+                      <MergeObjectView object={step.left} />
+                      <span className="merge-plus" aria-hidden="true">
+                        +
+                      </span>
+                      <MergeObjectView object={step.right} />
                     </div>
                   </li>
                 ))}
               </ol>
 
               <div className="final-item">
-                成品：{describeMergeObject(result.result)}
+                <span>成品</span>
+                <MergeObjectView object={result.result} className="merge-object--final" />
               </div>
             </div>
           )}
@@ -312,7 +331,7 @@ export function App() {
       </section>
 
       <footer className="disclaimer">
-        本工具不是 Minecraft 官方产品，未获得 Mojang 或 Microsoft 的批准，也与 Mojang 或 Microsoft 无关联。图标为自制卡通风格图标，材质配色参考游戏物品印象。
+        本工具不是 Minecraft 官方产品，未获得 Mojang 或 Microsoft 的批准，也与 Mojang 或 Microsoft 无关联。物品图标按本地参考图片裁剪呈现。
       </footer>
     </main>
   );

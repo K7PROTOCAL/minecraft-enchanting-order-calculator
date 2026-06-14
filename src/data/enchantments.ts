@@ -64,7 +64,7 @@ export const ENCHANTMENTS: EnchantmentDefinition[] = [
   }),
   enchantment({
     id: "feather_falling",
-    nameZh: "摔落保护",
+    nameZh: "摔落缓冲",
     maxLevel: 4,
     itemMultiplier: 2,
     appliesTo: ["boots"],
@@ -395,4 +395,3 @@ export const ENCHANTMENTS: EnchantmentDefinition[] = [
 export const ENCHANTMENT_BY_ID = Object.fromEntries(
   ENCHANTMENTS.map((enchantmentDef) => [enchantmentDef.id, enchantmentDef])
 ) as Record<string, EnchantmentDefinition>;
-
