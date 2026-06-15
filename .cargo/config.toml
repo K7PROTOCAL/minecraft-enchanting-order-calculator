@@ -1,0 +1,10 @@
+[target.'cfg(all())']
+rustflags = [
+  "--remap-path-prefix=D:\\codex\\我的世界附魔顺序计算器=.",
+  "--remap-path-prefix=C:\\Users\\24333\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f=cargo/registry",
+  "--remap-path-prefix=C:\\Users\\24333\\.cargo\\registry\\src=cargo/registry-src",
+  "--remap-path-prefix=C:\\Users\\24333\\.cargo=cargo-home",
+  "--remap-path-prefix=C:\\Users\\runneradmin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f=cargo/registry",
+  "--remap-path-prefix=C:\\Users\\runneradmin\\.cargo\\registry\\src=cargo/registry-src",
+  "--remap-path-prefix=C:\\Users\\runneradmin\\.cargo=cargo-home",
+]
